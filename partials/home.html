@@ -1,33 +1,38 @@
 <div class="container-fluid">
-	<div class="row" style="margin-bottom: 20px;">
-		<div class="col-md-2">
-			<select ng-model="orderBy">
-				<option value="">orderBy</option>
-				<option value="rating">Rating</option>
-				<option value="popularity">Popularity</option>
-			</select>
-		</div>
-		<div class="col-md-2">
-			<input placeholder="year" ng-model="year">
-		</div>
-		<div class="col-md-2">
-			<select ng-model="genre">
-				<option value="">genre</option>
-				<option ng-repeat="genre in genres" value="{{genre.id}}">{{genre.name}}</option>
-			</select>
-		</div>
-		<div class="col=md-2">
-			<button ng-click="submit()">submit</button>
-		</div>
+	<div class="row" id="controls">
+
+		<select ng-model="orderBy" ng-click="submit()">
+			<option value="">orderBy</option>
+			<option value="rating">Rating</option>
+			<option value="popularity">Popularity</option>
+		</select>
+
+		<select ng-model="orderBy" ng-click="submit()">
+			<option value="">orderBy</option>
+			<option value="rating">Rating</option>
+			<option value="popularity">Popularity</option>
+		</select>
+
+		<select ng-model="genre" ng-click="submit()">
+			<option value="">genre</option>
+			<option ng-repeat="genre in genres" value="{{genre.id}}">{{genre.name}}</option>
+		</select>
+
 	</div>
 </div>
-<div class="col-sm-6" ng-repeat="movie in movies">
+
+
+
+<div class="col-sm-6" ng-repeat="movie in movies" ui-sref="movie">
 	<div class="row" style="margin-bottom: 20px;">
-		<div class="col-xs-5">
+		<div class="col-sm-5">
 			<img src="{{baseImageURL}}{{imageSize}}{{movie.poster_path}}" style="width: 100%">
 		</div>
-		<div class="col-xs-7">
-			<p>{{movie.title}}</p>
+		<div class="col-md-7">
+			<h3 class="movieTitle">{{movie.title}}</h3>
+			<h5 class="movieRating">{{movie.vote_average}}</h5>
+			<h5 class="movieRelease"><span class="glyphicon glyphicon-star"></span>{{movie.release_date}}</h5>
+			<p class="movieOverview">{{movie.overview}}</p>
 		</div>
 	</div>
 	

@@ -6,6 +6,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		url: '/home',
 		templateUrl: 'partials/home.html',
 		controller: 'MainCtrl'
+	}).
+	state('movie', {
+		url: '/movie',
+		templateUrl: 'partials/details.html',
+		controller: 'MainCtrl'
 	});
 
 	$urlRouterProvider.otherwise('home');

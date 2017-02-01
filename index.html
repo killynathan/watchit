@@ -5,6 +5,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	<script src="config.js"></script>
 	<script src="javascripts/angularApp.js"></script>
 	<script src="javascripts/controllers.js"></script>
@@ -13,17 +14,18 @@
 <body ng-controller="MainCtrl">
 
 	<nav class="navbar navbar-default">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">bookDB</a>
-		</div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">bookDB</a>
+			</div>
 
-		<div>
-			<ul class="nav navbar-nav">
-				<li><a href="#">Rating</a>
-				<li><a href="#">Popular</a>
-				<li><a href="#">Genre</a>
-			</ul>
-		</div>
+			<div>
+		    	<ul class="nav navbar-nav navbar-right">
+			        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+			        <li><a href="#">Link</a></li>
+			    </ul>
+	      	</div>
+	    </div>
 	</nav>
 
 	<div style="width: 100%;">

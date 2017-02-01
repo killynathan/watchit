@@ -2,12 +2,12 @@ var controllers = angular.module('controllers', []);
 
 controllers.controller('MainCtrl', ['$scope', 'dataServices', function($scope, dataServices) {
 	$scope.baseImageURL = "http://image.tmdb.org/t/p/";
-	$scope.imageSize = "w300";
+	$scope.imageSize = "w500";
 
 	$scope._base = "https://api.themoviedb.org/3/discover/movie?api_key=" + config.key + "&language=en-US&include_adult=true&include_video=false";
 	$scope._sortByVote = "&sort_by=vote_average.desc";
 	$scope._sortByPopularity = "&sort_by=popularity.desc";
-	$scope._voteCountMin = "&vote_count.gte=1000";
+	$scope._voteCountMin = "&vote_count.gte=200";
 	$scope._genre = "&with_genres="; //number at end
 	$scope._page = "&page="; //page number
 	$scope._year = "&primary_release_year="; 
@@ -18,6 +18,10 @@ controllers.controller('MainCtrl', ['$scope', 'dataServices', function($scope, d
 
 	$scope.movies = dataServices.data;
 	$scope.genres = dataServices.genres;
+	$scope.years = [];
+	for (i = 2017; i >= 1900; i--) {
+		$scope.years.push(i);
+	}
 
 	$scope.genre = "";
 	$scope.year = "";

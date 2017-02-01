@@ -1,0 +1,18 @@
+#controls {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.movieTitle {
+	margin-top: 0;
+}
+
+.movieRating {
+	display: inline-block;
+	margin-top: 0;
+}
+
+.movieRelease {
+	display: inline-block;
+	margin-top: 0;
+}
