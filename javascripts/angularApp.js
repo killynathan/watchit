@@ -3,15 +3,15 @@ var app = angular.module('watchit', ['ui.router', 'controllers', 'services']);
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 	.state('home', {
-		url: '/home',
+		url: '/home/:page',
 		templateUrl: 'partials/home.html',
 		controller: 'MainCtrl'
 	}).
 	state('movie', {
-		url: '/movie',
+		url: '/movie/:id',
 		templateUrl: 'partials/details.html',
-		controller: 'MainCtrl'
+		controller: 'DetailsCtrl'
 	});
 
-	$urlRouterProvider.otherwise('home');
+	$urlRouterProvider.otherwise('/home/1');
 }]);

@@ -1,18 +1,35 @@
+body {
+	background-color: #E0E0E0;
+}
+
 #controls {
 	margin-bottom: 20px;
 	text-align: center;
 }
 
+.movieBlock {
+	cursor: pointer; 
+	padding-left: 0;
+	margin-bottom: 25px;
+}
+
+.movieBlockContent {
+	background-color: white;
+	margin-left: 0;
+}
+
 .movieTitle {
-	margin-top: 0;
+	margin-top: 10px;
+	font-weight: bold;
 }
 
 .movieRating {
-	display: inline-block;
 	margin-top: 0;
+	display: inline-block;
 }
 
 .movieRelease {
-	display: inline-block;
 	margin-top: 0;
+	display: inline-block;
+	float: right;
 }

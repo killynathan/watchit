@@ -1,44 +1,66 @@
 var controllers = angular.module('controllers', []);
 
-controllers.controller('MainCtrl', ['$scope', 'dataServices', function($scope, dataServices) {
+controllers.controller('MainCtrl', ['$scope', 'dataServices', 'data', '$stateParams', '$state', function($scope, dataServices, data, $stateParams, $state) {
 	$scope.baseImageURL = "http://image.tmdb.org/t/p/";
 	$scope.imageSize = "w500";
 
-	$scope._base = "https://api.themoviedb.org/3/discover/movie?api_key=" + config.key + "&language=en-US&include_adult=true&include_video=false";
-	$scope._sortByVote = "&sort_by=vote_average.desc";
-	$scope._sortByPopularity = "&sort_by=popularity.desc";
-	$scope._voteCountMin = "&vote_count.gte=200";
-	$scope._genre = "&with_genres="; //number at end
-	$scope._page = "&page="; //page number
-	$scope._year = "&primary_release_year="; 
+	$scope.page = $stateParams.page;
+	data.updatePage($scope.page);
+	$scope.url = data.url;
+
+	$scope.genre = "";
+	$scope.year = "";
+	$scope.orderBy = "";
+
+	$scope.submit = function() {
+		data.submit($scope.page, $scope.year, $scope.orderBy, $scope.genre);
+		$scope.url = data.url;
+		dataServices.getMovies($scope.url);
+	};
 
 
-	dataServices.getMovies($scope._base + $scope._page + 1);
+	dataServices.getMovies($scope.url);
 	dataServices.getGenres();
 
 	$scope.movies = dataServices.data;
 	$scope.genres = dataServices.genres;
+
+
 	$scope.years = [];
 	for (i = 2017; i >= 1900; i--) {
 		$scope.years.push(i);
 	}
 
-	$scope.genre = "";
-	$scope.year = "";
-	$scope.orderBy = "";
-	
-	$scope.submit = function() {
-		$scope.url = $scope._base  + $scope._page + 1;
-		if ($scope.year !== "")
-			$scope.url += $scope._year + $scope.year;
-		if ($scope.orderBy === "rating")
-			$scope.url += $scope._sortByVote + $scope._voteCountMin;
-		else if ($scope.orderBy === "popularity")
-			$scope.url += $scope._sortByPopularity;
-		if ($scope.genre !== "")
-			$scope.url += $scope._genre + $scope.genre;
-
-		dataServices.getMovies($scope.url);
-
+	$scope.genreIdsToGenres = function(ids) {
+		var str = "";
+		for (var i = 0; i < ids.length; i++) {
+			str += idToGenre(ids[i]);
+			if (i !== ids.length - 1) str += ', ';
+		}
+		return str;
 	}
+
+	idToGenre = function(id) {
+		for (var i = 0; i < $scope.genres.length; i++) {
+			if (id === $scope.genres[i].id) return $scope.genres[i].name;
+		}
+	}
+
+	$scope.nextPage = function() {
+		$scope.page++;
+		//data.submit($scope.page, $scope.year, $scope.orderBy, $scope.genre);
+		window.location.href="#/home/" + $scope.page;
+	}
+
+	
+}]);
+
+controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices', function($scope, $stateParams, dataServices) {
+	$scope.id = $stateParams.id;
+	dataServices.getMovie($scope.id);
+	$scope.movie = dataServices.movie;
+
+	$scope.imageBaseUrl = "http://image.tmdb.org/t/p/";
+	$scope.imageSize = "w600";
+
 }]);

@@ -7,10 +7,9 @@
 			<option value="popularity">Popularity</option>
 		</select>
 
-		<select ng-model="orderBy" ng-click="submit()">
-			<option value="">orderBy</option>
-			<option value="rating">Rating</option>
-			<option value="popularity">Popularity</option>
+		<select ng-model="year" ng-click="submit()">
+			<option value="">year</option>
+			<option value="{{year}}" ng-repeat="year in years">{{year}}</option>
 		</select>
 
 		<select ng-model="genre" ng-click="submit()">
@@ -20,20 +19,42 @@
 
 	</div>
 </div>
-
-
-
-<div class="col-sm-6" ng-repeat="movie in movies" ui-sref="movie">
-	<div class="row" style="margin-bottom: 20px;">
-		<div class="col-sm-5">
-			<img src="{{baseImageURL}}{{imageSize}}{{movie.poster_path}}" style="width: 100%">
-		</div>
-		<div class="col-md-7">
-			<h3 class="movieTitle">{{movie.title}}</h3>
-			<h5 class="movieRating">{{movie.vote_average}}</h5>
-			<h5 class="movieRelease"><span class="glyphicon glyphicon-star"></span>{{movie.release_date}}</h5>
-			<p class="movieOverview">{{movie.overview}}</p>
+{{url}}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6 movieBlock" ng-repeat="movie in movies" ui-sref="movie({id: '{{movie.id}}'})">
+			<div class="container-fluid">
+				<div class="row movieBlockContent">
+					<div class="col-sm-5" style="padding-left: 0">
+						<img src="{{baseImageURL}}{{imageSize}}{{movie.poster_path}}" style="width: 100%">
+					</div>
+					<div class="col-md-7">
+						<h4 class="movieTitle">{{movie.title}}</h4>
+						<h5 class="movieRating">{{movie.vote_average}}<span class="glyphicon glyphicon-star"></span></h5>
+						<h5 class="movieRelease">{{movie.release_date}}</h5>
+						<p>{{genreIdsToGenres(movie.genre_ids)}}</p>
+					</div> 
+				</div>
+			</div>
 		</div>
 	</div>
-	
 </div>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a ng-click="nextPage()" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
