@@ -1,10 +1,20 @@
 body {
-	background-color: #E0E0E0;
+	background-color:; #E0E0E0;
 }
 
 #controls {
 	margin-bottom: 20px;
-	text-align: center;
+}
+
+#controls select {
+	size: 5;
+	height: 30px;
+	border-radius: 3px;
+	transition: 1s;
+}
+
+#controls p {
+	margin-bottom: 5px;
 }
 
 .movieBlock {
@@ -16,6 +26,9 @@ body {
 .movieBlockContent {
 	background-color: white;
 	margin-left: 0;
+
+	box-shadow: 2px 2px 10px #b3b3b3;
+	border-top: solid 1px #e6e6e6;
 }
 
 .movieTitle {
@@ -32,4 +45,13 @@ body {
 	margin-top: 0;
 	display: inline-block;
 	float: right;
+}
+
+.movieGenre {
+	font-style: italic;
+	color: #808080;
+}
+
+#pagination {
+	text-align: center;
 }

@@ -67,7 +67,7 @@ services.factory('data', [function() {
 	d.updatePage = function(page) {
 		var index = d.url.indexOf("&page=") + 6;
 		var temp = d.url.substr(0, index) + page;
-		if (index + 1 <= d.url.length) {
+		if (index + 1 > d.url.length) {
 			temp += d.url.substr(index + 1);
 		}
 		d.url = temp;

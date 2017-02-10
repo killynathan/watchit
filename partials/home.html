@@ -1,25 +1,33 @@
-<div class="container-fluid">
+<div class="container">
 	<div class="row" id="controls">
 
-		<select ng-model="orderBy" ng-click="submit()">
-			<option value="">orderBy</option>
-			<option value="rating">Rating</option>
-			<option value="popularity">Popularity</option>
-		</select>
+		<div class="col-sm-2">
+			<p>Order By</p>
+			<select ng-model="orderBy" ng-click="submit()">
+				<option value="rating">Rating</option>
+				<option value="popularity" selected>Popularity</option>
+			</select>
+		</div>
 
-		<select ng-model="year" ng-click="submit()">
-			<option value="">year</option>
-			<option value="{{year}}" ng-repeat="year in years">{{year}}</option>
-		</select>
+		<div class="col-sm-2">
+			<p>Year</p>
+			<select ng-model="year" ng-click="submit()">
+				<option value="">All</option>
+				<option value="{{year}}" ng-repeat="year in years">{{year}}</option>
+			</select>
+		</div>
 
-		<select ng-model="genre" ng-click="submit()">
-			<option value="">genre</option>
-			<option ng-repeat="genre in genres" value="{{genre.id}}">{{genre.name}}</option>
-		</select>
+		<div class="col-sm-2">
+			<p>Genre</p>
+			<select ng-model="genre" ng-click="submit()">
+				<option value="">All</option>
+				<option ng-repeat="genre in genres" value="{{genre.id}}">{{genre.name}}</option>
+			</select>
+		</div>
 
 	</div>
 </div>
-{{url}}
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-6 movieBlock" ng-repeat="movie in movies" ui-sref="movie({id: '{{movie.id}}'})">
@@ -32,25 +40,22 @@
 						<h4 class="movieTitle">{{movie.title}}</h4>
 						<h5 class="movieRating">{{movie.vote_average}}<span class="glyphicon glyphicon-star"></span></h5>
 						<h5 class="movieRelease">{{movie.release_date}}</h5>
-						<p>{{genreIdsToGenres(movie.genre_ids)}}</p>
+						<p class="movieGenre">{{genreIdsToGenres(movie.genre_ids)}}</p>
 					</div> 
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<nav aria-label="Page navigation">
+
+<nav aria-label="Page navigation" id="pagination">
   <ul class="pagination">
     <li>
-      <a href="#" aria-label="Previous">
+      <a ng-click="prevPage()" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    <li ng-repeat = "page in pagelist"><a href="">{{page}}</a></li>
     <li>
       <a ng-click="nextPage()" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>

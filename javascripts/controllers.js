@@ -12,6 +12,8 @@ controllers.controller('MainCtrl', ['$scope', 'dataServices', 'data', '$statePar
 	$scope.year = "";
 	$scope.orderBy = "";
 
+	$scope.pagelist = [];
+
 	$scope.submit = function() {
 		data.submit($scope.page, $scope.year, $scope.orderBy, $scope.genre);
 		$scope.url = data.url;
@@ -52,6 +54,26 @@ controllers.controller('MainCtrl', ['$scope', 'dataServices', 'data', '$statePar
 		window.location.href="#/home/" + $scope.page;
 	}
 
+	$scope.prevPage = function() {
+		if ($scope.page <= 1) {
+			return;
+		}
+		$scope.page--;
+		window.location.href="#/home/" + $scope.page;
+	}
+
+	$scope.changePage = function
+
+	$scope.getPagelist = function() {
+		var start = $scope.page - 2;
+		if (start <= 0) {
+			start = 1;
+		}
+		for (var i = start; i < start + 5; i++) {
+			$scope.pagelist.push(i);
+		}
+	}
+	$scope.getPagelist();
 	
 }]);
 
