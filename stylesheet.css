@@ -55,3 +55,41 @@ body {
 #pagination {
 	text-align: center;
 }
+
+#pagination a {
+	cursor: pointer;
+}
+
+#detailsContent {
+	margin-top: 50px;
+}
+
+.detailsTitle {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: bold;
+}
+
+.detailsTagline {
+	font-style: italic;
+	color: #808080;
+	margin-top: 2px;
+}
+
+.detailsRating {
+	margin-top: 10px;
+	display: inline-block;
+}
+
+.detailsRelease {
+	margin-top: 10px;
+	display: inline-block;
+	float: right;
+}
+
+.detailsGeneralTitle {
+	font-weight: bold;
+}
+
+.detailsGenres {
+}

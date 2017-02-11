@@ -5,7 +5,7 @@
 			<p>Order By</p>
 			<select ng-model="orderBy" ng-click="submit()">
 				<option value="rating">Rating</option>
-				<option value="popularity" selected>Popularity</option>
+				<option value="popularity">Popularity</option>
 			</select>
 		</div>
 
@@ -55,7 +55,7 @@
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li ng-repeat = "page in pagelist"><a href="">{{page}}</a></li>
+    <li ng-repeat = "page in pagelist"><a href="#/home/{{page}}">{{page}}</a></li>
     <li>
       <a ng-click="nextPage()" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>

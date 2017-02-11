@@ -1,31 +1,28 @@
 var controllers = angular.module('controllers', []);
 
-controllers.controller('MainCtrl', ['$scope', 'dataServices', 'data', '$stateParams', '$state', function($scope, dataServices, data, $stateParams, $state) {
+controllers.controller('MainCtrl', ['$scope', 'dataServices', 'url', '$stateParams', '$state', function($scope, dataServices, url, $stateParams, $state) {
 	$scope.baseImageURL = "http://image.tmdb.org/t/p/";
 	$scope.imageSize = "w500";
 
-	$scope.page = $stateParams.page;
-	data.updatePage($scope.page);
-	$scope.url = data.url;
+	$scope.page = parseInt($stateParams.page);
+	$scope.url = url.url;
+	$scope.movies = dataServices.data;
+	$scope.genres = dataServices.genres;
 
-	$scope.genre = "";
-	$scope.year = "";
-	$scope.orderBy = "";
+	$scope.genre = dataServices.genre;
+	$scope.year = dataServices.year;
+	$scope.orderBy = dataServices.orderBy;
 
 	$scope.pagelist = [];
 
 	$scope.submit = function() {
-		data.submit($scope.page, $scope.year, $scope.orderBy, $scope.genre);
-		$scope.url = data.url;
+		url.submit($scope.page, $scope.year, $scope.orderBy, $scope.genre);
+		$scope.url = url.url;
 		dataServices.getMovies($scope.url);
+		dataServices.orderBy = $scope.orderBy;
+		dataServices.genre = $scope.genre;
+		dataServices.year = $scope.year;
 	};
-
-
-	dataServices.getMovies($scope.url);
-	dataServices.getGenres();
-
-	$scope.movies = dataServices.data;
-	$scope.genres = dataServices.genres;
 
 
 	$scope.years = [];
@@ -62,8 +59,6 @@ controllers.controller('MainCtrl', ['$scope', 'dataServices', 'data', '$statePar
 		window.location.href="#/home/" + $scope.page;
 	}
 
-	$scope.changePage = function
-
 	$scope.getPagelist = function() {
 		var start = $scope.page - 2;
 		if (start <= 0) {
@@ -78,8 +73,8 @@ controllers.controller('MainCtrl', ['$scope', 'dataServices', 'data', '$statePar
 }]);
 
 controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices', function($scope, $stateParams, dataServices) {
-	$scope.id = $stateParams.id;
-	dataServices.getMovie($scope.id);
+	//$scope.id = $stateParams.id;
+	//dataServices.getMovie($scope.id);
 	$scope.movie = dataServices.movie;
 
 	$scope.imageBaseUrl = "http://image.tmdb.org/t/p/";

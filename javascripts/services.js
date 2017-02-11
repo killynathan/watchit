@@ -4,7 +4,10 @@ services.factory('dataServices', ['$http', function($http) {
 	var d = {
 		data: [],
 		genres: [],
-		movie: {}
+		movie: {},
+		orderBy: "popularity",
+		year: "",
+		genre: ""
 	};
 
 	d.getMovies = function(url) {
@@ -22,17 +25,15 @@ services.factory('dataServices', ['$http', function($http) {
 
 	d.getMovie = function(id) {
 		$http.get("https://api.themoviedb.org/3/movie/" + id + "?api_key=4980cd40e2331a9da1e3d5f49dba8ba7&language=en-US").success(function(data) {
-			var temp;
 			angular.copy(data, d.movie);
 		})
 	}
 
-
 	return d;
 }]);
 
-services.factory('data', [function() {
-	var _base = "https://api.themoviedb.org/3/discover/movie?api_key=" + config.key + "&language=en-US&include_adult=true&include_video=false";
+services.factory('url', [function() {
+	var _base = "https://api.themoviedb.org/3/discover/movie?api_key=4980cd40e2331a9da1e3d5f49dba8ba7&language=en-US&include_adult=true&include_video=false";
 	var _sortByVote = "&sort_by=vote_average.desc";
 	var _sortByPopularity = "&sort_by=popularity.desc";
 	var _voteCountMin = "&vote_count.gte=200";
@@ -67,7 +68,7 @@ services.factory('data', [function() {
 	d.updatePage = function(page) {
 		var index = d.url.indexOf("&page=") + 6;
 		var temp = d.url.substr(0, index) + page;
-		if (index + 1 > d.url.length) {
+		if (index + 1 < d.url.length) {
 			temp += d.url.substr(index + 1);
 		}
 		d.url = temp;

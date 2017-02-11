@@ -1,21 +1,25 @@
-<div class="container">
+<div class="container" id="detailsContent">
 	<div class="row">
 		<div class="col-sm-4">
-			<img src="{{baseImageURL}}{{imageSize}}{{movie.poster_path}}" style="width: 100%">
+			<img src="http://image.tmdb.org/t/p/w600{{movie.poster_path}}" style="width: 100%">
 		</div>
 		<div class="col-sm-8">
-			<h2>{{movie.title}}</h2>
-			<h5>{{movie.tagline}}</h5>
-			<p><span ng-repeat="genre in movie.genres">{{genre.name}}, </span></p>
-			<h4 class="movieRating">User Score: {{movie.vote_average}}<span class="glyphicon glyphicon-star"></span></h4>
-			<h4 class="movieRelease">{{movie.release_date}}</h4>
-			<h4>Overview</h4>
+			<h2 class="detailsTitle">{{movie.title}}</h2>
+			<h5 class="detailsTagline">{{movie.tagline}}</h5>
+			<h4 class="detailsRating">User Score: {{movie.vote_average}}<span class="glyphicon glyphicon-star"></span></h4>
+			<h4 class="detailsRelease">{{movie.release_date}}</h4>
+			
+			<h4 class="detailsGeneralTitle">Overview</h4>
 			<p>{{movie.overview}}</p>
+
+			<h4 class="detailsGeneralTitle">Data</h4>
+			<p class="detailsGenres">Genres: <span ng-repeat="genre in movie.genres">{{genre.name}}, </span></p>
 			<p>Budget: {{movie.budget}}</p>
 			<p>Revenue: {{movie.revenue}}</p>
 			<p>Runtime: {{movie.runtime}} mins.</p>
 			<p>Homepage: {{movie.homepage}}</p>
 			<p>Production Companies: <span ng-repeat="company in movie.production_companies">{{company.name}}, </span></p>
+		
 		</div>
 	</div>
 </div>
