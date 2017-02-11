@@ -93,3 +93,18 @@ body {
 
 .detailsGenres {
 }
+
+#footer {
+	height: 200px;
+	background-color: #081c24;
+	color: #01d277;
+	text-align: center;
+}
+
+#footer img {
+	margin-top: 50px;
+	height: 80px;
+}
+
+#footer h4 {
+}
