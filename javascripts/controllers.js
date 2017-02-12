@@ -1,7 +1,7 @@
 var controllers = angular.module('controllers', []);
 
 controllers.controller('MainCtrl', ['$scope', 'dataServices', 'url', '$stateParams', '$state', function($scope, dataServices, url, $stateParams, $state) {
-	$scope.baseImageURL = "http://image.tmdb.org/t/p/";
+	$scope.baseImageURL = "https://image.tmdb.org/t/p/";
 	$scope.imageSize = "w500";
 
 	$scope.page = parseInt($stateParams.page);
@@ -76,10 +76,11 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 	$scope.cast = dataServices.cast;
 	$scope.movie = dataServices.movie;
 
-	$scope.imageBaseUrl = "http://image.tmdb.org/t/p/";
+	$scope.imageBaseUrl = "https://image.tmdb.org/t/p/";
 	$scope.imageSize = "w600";
 
-	$scope.director
+	$scope.directors;
+	$scope.topActors;
 
 	$scope.getTopActors = function() {
 		var topActors = $scope.cast.cast.slice(0, 6);
@@ -88,7 +89,7 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 			str += topActors[i].name;
 			if (i != topActors.length - 1) str += ", ";
 		}
-		return str;
+		return "test";
 	}
 
 	$scope.getDirectors = function() {
@@ -100,7 +101,7 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 			}
 		}
 		var temp = str.substring(0, str.length - 2);
-		return temp;
+		return "test";
 	}
 
 }]);
