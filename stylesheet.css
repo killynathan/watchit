@@ -2,6 +2,17 @@ body {
 	background-color:; #E0E0E0;
 }
 
+#nav {
+	background-color: #081c24;
+	height: 50px;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+#navTitle {
+	color: #01d277;
+}
+
 #controls {
 	margin-bottom: 20px;
 }
@@ -58,16 +69,19 @@ body {
 
 #pagination a {
 	cursor: pointer;
+	color: #081c24;
 }
 
 #detailsContent {
 	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 .detailsTitle {
 	margin-top: 0;
 	margin-bottom: 0;
 	font-weight: bold;
+	display: inline-block;
 }
 
 .detailsTagline {
@@ -87,11 +101,18 @@ body {
 	float: right;
 }
 
-.detailsGeneralTitle {
+.detailsOverviewTitle {
 	font-weight: bold;
 }
 
-.detailsGenres {
+.detailsCastTitle {
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+.detailsInfoTitle {
+	font-weight: bold;
+	margin-top: 30px;
 }
 
 #footer {
@@ -103,8 +124,5 @@ body {
 
 #footer img {
 	margin-top: 50px;
-	height: 80px;
-}
-
-#footer h4 {
+	height: 70px;
 }

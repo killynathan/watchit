@@ -73,11 +73,34 @@ controllers.controller('MainCtrl', ['$scope', 'dataServices', 'url', '$statePara
 }]);
 
 controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices', function($scope, $stateParams, dataServices) {
-	//$scope.id = $stateParams.id;
-	//dataServices.getMovie($scope.id);
+	$scope.cast = dataServices.cast;
 	$scope.movie = dataServices.movie;
 
 	$scope.imageBaseUrl = "http://image.tmdb.org/t/p/";
 	$scope.imageSize = "w600";
+
+	$scope.director
+
+	$scope.getTopActors = function() {
+		var topActors = $scope.cast.cast.slice(0, 6);
+		var str = "";
+		for (i = 0; i < topActors.length; i++) {
+			str += topActors[i].name;
+			if (i != topActors.length - 1) str += ", ";
+		}
+		return str;
+	}
+
+	$scope.getDirectors = function() {
+		var str = ""
+		var arr = $scope.cast.crew;
+		for (i = 0; i < arr.length; i++) {
+			if (arr[i].job === "Director") {
+				str += arr[i].name + ", ";
+			}
+		}
+		var temp = str.substring(0, str.length - 2);
+		return temp;
+	}
 
 }]);

@@ -5,6 +5,7 @@ services.factory('dataServices', ['$http', function($http) {
 		data: [],
 		genres: [],
 		movie: {},
+		cast: [],
 		orderBy: "popularity",
 		year: "",
 		genre: ""
@@ -26,6 +27,12 @@ services.factory('dataServices', ['$http', function($http) {
 	d.getMovie = function(id) {
 		$http.get("https://api.themoviedb.org/3/movie/" + id + "?api_key=4980cd40e2331a9da1e3d5f49dba8ba7&language=en-US").success(function(data) {
 			angular.copy(data, d.movie);
+		})
+	}
+
+	d.getCast = function(id) {
+		$http.get("https://api.themoviedb.org/3/movie/" + id + "/credits?api_key=4980cd40e2331a9da1e3d5f49dba8ba7").success(function(data) {
+			angular.copy(data, d.cast)
 		})
 	}
 

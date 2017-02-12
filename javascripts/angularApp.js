@@ -20,6 +20,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		controller: 'DetailsCtrl',
 		resolve: {
 			moviePromise: ['dataServices', '$stateParams', function(dataServices, $stateParams) {
+				dataServices.getCast($stateParams.id);
 				return dataServices.getMovie($stateParams.id);
 			}]
 		}
