@@ -102,7 +102,8 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 		$scope.directors = temp;
 	}
 	$scope.topActors = "glitched T_T";
+	$scope.directors = "glitched";
 	//$scope.getTopActors();
-	$scope.getDirectors();
+	//$scope.getDirectors();
 
 }]);
