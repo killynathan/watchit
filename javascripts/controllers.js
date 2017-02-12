@@ -80,11 +80,12 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 	$scope.imageSize = "w600";
 
 	$scope.getTopActors = function() {
-		var topActors = $scope.cast.cast.slice(0, 6);
+		//var topActors = $scope.cast.cast.slice(0, 6);
+		var actors = $scope.cast.cast;
 		var str = "";
-		for (i = 0; i < topActors.length; i++) {
-			str += topActors[i].name;
-			if (i != topActors.length - 1) str += ", ";
+		for (i = 0; i < 6; i++) {
+			str += actors[i].name;
+			if (i != 5) str += ", ";
 		}
 		$scope.topActors = str;
 	}
@@ -98,10 +99,10 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 			}
 		}
 		var temp = str.substring(0, str.length - 2);
-		$scope.directors = str;
+		$scope.directors = temp;
 	}
-
-	$scope.getTopActors();
+	$scope.topActors = "glitched T_T";
+	//$scope.getTopActors();
 	$scope.getDirectors();
 
 }]);
