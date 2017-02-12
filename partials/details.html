@@ -13,8 +13,8 @@
 			<p>{{movie.overview}}</p>
 
 			<h4 class="detailsCastTitle">Cast</h4>
-			<p>Top Billed Cast: {{getTopActors()}}</p>
-			<p>Director(s): {{getDirectors()}}</p>
+			<p>Top Billed Cast: {{topActors}}</p>
+			<p>Director(s): {{directors}}</p>
 
 			<h4 class="detailsInfoTitle">Info</h4>
 			<p class="detailsGenres">Genres: <span ng-repeat="genre in movie.genres">{{genre.name}}, </span></p>

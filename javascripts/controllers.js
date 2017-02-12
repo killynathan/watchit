@@ -79,9 +79,6 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 	$scope.imageBaseUrl = "https://image.tmdb.org/t/p/";
 	$scope.imageSize = "w600";
 
-	$scope.directors;
-	$scope.topActors;
-
 	$scope.getTopActors = function() {
 		var topActors = $scope.cast.cast.slice(0, 6);
 		var str = "";
@@ -89,7 +86,7 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 			str += topActors[i].name;
 			if (i != topActors.length - 1) str += ", ";
 		}
-		return "test";
+		$scope.topActors = str;
 	}
 
 	$scope.getDirectors = function() {
@@ -101,7 +98,10 @@ controllers.controller('DetailsCtrl', ['$scope', '$stateParams', 'dataServices',
 			}
 		}
 		var temp = str.substring(0, str.length - 2);
-		return "test";
+		$scope.directors = str;
 	}
+
+	$scope.getTopActors();
+	$scope.getDirectors();
 
 }]);
