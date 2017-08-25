@@ -1,4 +1,4 @@
-killynathan.github.io/watchit
+https://killynathan.github.io/watchit
 
 loads movies from The Movie Database
 
